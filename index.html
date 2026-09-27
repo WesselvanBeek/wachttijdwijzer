@@ -1,0 +1,360 @@
+<title>Wachttijdwijzer GGZ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#F2F4F1; --surface:#FFFFFF; --ink:#1C2E2C; --muted:#5B6B68; --line:#D9DFDB;
+  --accent:#2C6E62; --accent-soft:#DCEBE6; --ok:#2F7D4F; --warn:#9A6414; --bad:#B0443A;
+  --ok-soft:#E1F0E6; --warn-soft:#F7ECD8; --bad-soft:#F5E1DE; --track:#E6EAE7;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Figtree",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#131B1A; --surface:#1B2624; --ink:#E4ECE9; --muted:#9AABA7; --line:#2E3C39;
+    --accent:#6FC2AF; --accent-soft:#1F3833; --ok:#6CC08C; --warn:#E0A94F; --bad:#E37D72;
+    --ok-soft:#1D3325; --warn-soft:#3A2E1A; --bad-soft:#3D2220; --track:#2A3633;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#131B1A; --surface:#1B2624; --ink:#E4ECE9; --muted:#9AABA7; --line:#2E3C39;
+  --accent:#6FC2AF; --accent-soft:#1F3833; --ok:#6CC08C; --warn:#E0A94F; --bad:#E37D72;
+  --ok-soft:#1D3325; --warn-soft:#3A2E1A; --bad-soft:#3D2220; --track:#2A3633;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;padding-inline:16px;padding-block:24px 48px}
+a{color:var(--accent)}
+.wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1.05;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.sub{color:var(--muted);margin:6px 0 0;max-width:62ch}
+.stamp{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:var(--accent-soft);color:var(--accent);padding:6px 10px;border-radius:6px}
+.refresh{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;background:var(--accent-soft);border-radius:12px;padding:12px 16px}
+.refresh-txt{display:flex;flex-direction:column;gap:2px;font-size:14px}
+.refresh-txt span{color:var(--muted);font-size:13px}
+.refresh button{font:inherit;font-weight:600;border:0;background:var(--accent);color:var(--surface);border-radius:8px;padding:9px 14px;cursor:pointer}
+.refresh-link{font-weight:600;background:var(--accent);color:var(--surface);border-radius:8px;padding:9px 14px;text-decoration:none}
+.refresh button:disabled{opacity:.55;cursor:default}
+.chip.new{background:var(--ok-soft);color:var(--ok);font-weight:600}
+.layout{display:grid;grid-template-columns:300px 1fr;gap:20px;align-items:start}
+@media (max-width:820px){.layout{grid-template-columns:1fr}}
+aside{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:18px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px)}
+@media (max-width:820px){aside{position:static}}
+.field{display:flex;flex-direction:column;gap:6px}
+.label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+select,input[type=range]{width:100%;font:inherit;color:var(--ink)}
+select{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 10px}
+select:focus-visible,input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input[type=range]{accent-color:var(--accent)}
+.range-row{display:flex;justify-content:space-between;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.toggle{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:10px;cursor:pointer;background:var(--bg)}
+.toggle:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.toggle input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--accent);flex:none}
+.toggle b{display:block;font-weight:600}
+.toggle small{color:var(--muted);font-size:13px}
+.toggle.small{padding:8px 12px}
+.hint{font-size:13px;color:var(--muted);margin:0}
+.results{display:flex;flex-direction:column;gap:14px}
+.summary{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline;justify-content:space-between}
+.summary p{margin:0}
+.count{font-family:var(--display);font-weight:700;font-size:22px}
+.sort{display:flex;gap:6px;flex-wrap:wrap}
+.sort button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
+.sort button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:14px;height:8px;border-radius:2px;display:inline-block}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;grid-template-columns:1fr auto;gap:10px 16px}
+.card.stopped{background:transparent;border-style:dashed}
+.card h3{font-family:var(--display);font-weight:500;font-size:19px;margin:0;line-height:1.2}
+.card h3 .afd{display:block;font-family:var(--body);font-size:14px;font-weight:500;color:var(--muted);margin-top:2px}
+.meta{color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;grid-column:1/-1}
+.chip{font-size:12px;padding:3px 8px;border-radius:999px;background:var(--track);color:var(--ink)}
+.chip.video{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.chip.warn{background:var(--warn-soft);color:var(--warn);font-weight:600}
+.chip.bad{background:var(--bad-soft);color:var(--bad);font-weight:600}
+.total{text-align:right}
+.total .n{font-family:var(--mono);font-size:26px;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.total .u{font-size:12px;color:var(--muted)}
+.status{display:inline-block;margin-top:6px;font-size:12px;font-weight:600;padding:3px 8px;border-radius:6px}
+.status.ok{background:var(--ok-soft);color:var(--ok)}
+.status.warn{background:var(--warn-soft);color:var(--warn)}
+.status.bad{background:var(--bad-soft);color:var(--bad)}
+.status.muted{background:var(--track);color:var(--muted)}
+.bar{grid-column:1/-1;display:flex;flex-direction:column;gap:4px}
+.track{position:relative;height:12px;background:var(--track);border-radius:3px;overflow:hidden}
+.seg{position:absolute;top:0;bottom:0}
+.seg.a{background:var(--accent)}
+.seg.b{background:var(--accent);opacity:.45}
+.seg.u{background:repeating-linear-gradient(90deg,var(--accent) 0 3px,transparent 3px 7px);opacity:.35}
+.norm{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--bad)}
+.barlbl{display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:space-between;font-size:12px;color:var(--muted);font-family:var(--mono);font-variant-numeric:tabular-nums}
+.note{grid-column:1/-1;font-size:13px;color:var(--muted);margin:0}
+.src{grid-column:1/-1;font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 12px;border-top:1px solid var(--line);padding-top:8px}
+.divider{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:28px;text-align:center;color:var(--muted)}
+.empty button{margin-top:10px;font:inherit;border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:8px;padding:7px 12px;cursor:pointer}
+footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;max-width:75ch}
+footer p{margin:0 0 8px}
+@media (prefers-reduced-motion:no-preference){.seg{transition:width .3s ease,left .3s ease}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Wachttijdwijzer GGZ</h1>
+      <p class="sub">Wachttijden van GGZ-aanbieders rond Veenendaal, zoals ze op hun eigen websites staan. Filter op je zorgverzekering en op behandeling via beeldbellen.</p>
+    </div>
+  </header>
+
+  <div class="refresh">
+    <div class="refresh-txt">
+      <b id="refreshTitle">Wachttijden</b>
+      <span id="refreshSub"></span>
+    </div>
+    <a class="refresh-link" id="refreshLink" hidden target="_blank" rel="noopener" title="Opent GitHub. Klik daar op 'Run workflow'. Hiervoor moet je ingelogd zijn met schrijfrechten.">Nu vernieuwen</a>
+  </div>
+
+  <div class="layout">
+    <aside aria-label="Filters">
+      <div class="field">
+        <label class="label" for="plaats">Woonplaats</label>
+        <select id="plaats"></select>
+      </div>
+      <div class="field">
+        <label class="label" for="afstand">Maximale afstand</label>
+        <input type="range" id="afstand" min="5" max="50" step="5" value="30">
+        <div class="range-row"><span>5 km</span><span id="afstandVal">30 km</span><span>50 km</span></div>
+      </div>
+
+      <label class="toggle" for="beeldbellen">
+        <input type="checkbox" id="beeldbellen">
+        <span><b>Ik wil therapie via beeldbellen</b><small>Toon alleen aanbieders die op hun site online behandeling noemen.</small></span>
+      </label>
+      <label class="toggle small" for="videoOnbekend" id="videoOnbekendWrap" hidden>
+        <input type="checkbox" id="videoOnbekend">
+        <span><small>Ook aanbieders tonen die niets over beeldbellen melden</small></span>
+      </label>
+
+      <div class="field">
+        <label class="label" for="verzekeraar">Zorgverzekeraar</label>
+        <select id="verzekeraar"></select>
+      </div>
+      <label class="toggle small" for="zonderContract" id="zonderContractWrap" hidden>
+        <input type="checkbox" id="zonderContract">
+        <span><small>Ook aanbieders tonen zonder contract of met stop voor deze verzekeraar</small></span>
+      </label>
+
+      <div class="field">
+        <label class="label" for="zorgvorm">Zorgvorm</label>
+        <select id="zorgvorm">
+          <option value="">Alle zorgvormen</option>
+          <option value="Basis GGZ">Basis GGZ</option>
+          <option value="Specialistische GGZ">Specialistische GGZ</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="label" for="doelgroep">Doelgroep</label>
+        <select id="doelgroep">
+          <option value="">Iedereen</option>
+          <option value="Volwassenen">Volwassenen</option>
+          <option value="Jeugd">Jeugd (tot 18)</option>
+          <option value="Ouderen">Ouderen</option>
+        </select>
+      </div>
+      <label class="toggle small" for="toonStop">
+        <input type="checkbox" id="toonStop" checked>
+        <span><small>Aanmeldstops onderaan tonen</small></span>
+      </label>
+    </aside>
+
+    <section class="results" aria-live="polite">
+      <div class="summary">
+        <p><span class="count" id="count">0</span> <span id="countLbl">plekken met open aanmelding</span> <span class="hint" id="fastest"></span></p>
+        <div class="sort" role="group" aria-label="Sorteren">
+          <button type="button" data-sort="wacht" aria-pressed="true">Kortste wachttijd</button>
+          <button type="button" data-sort="afstand" aria-pressed="false">Dichtstbij</button>
+        </div>
+      </div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--accent)"></i>Aanmelding → intake</span>
+        <span><i class="sw" style="background:var(--accent);opacity:.45"></i>Intake → behandeling</span>
+        <span><i class="sw" style="background:repeating-linear-gradient(90deg,var(--accent) 0 3px,transparent 3px 7px);opacity:.5"></i>Niet vermeld</span>
+        <span><i class="sw" style="background:var(--bad);width:2px;height:12px"></i>Treeknorm (14 wk)</span>
+      </div>
+      <div id="list" class="results"></div>
+    </section>
+  </div>
+
+  <footer>
+    <p><b>Hoe lees je dit?</b> Aanmeldwachttijd is de tijd tot het intakegesprek, behandelwachttijd de tijd van intake tot de start van de behandeling. De Treeknorm is maximaal 4 weken tot intake en 10 weken tot behandeling. Maanden zijn omgerekend naar weken (1 maand ≈ 4,3 weken). Bij een bandbreedte, zoals 10 tot 12 weken, telt de hoogste waarde voor het sorteren.</p>
+    <p><b>Let op.</b> De cijfers worden elke ochtend automatisch van de websites van de aanbieders gehaald. Elke kaart toont wanneer die voor het laatst is gecontroleerd. Kan het ophaalscript een pagina niet meer lezen, bijvoorbeeld omdat de aanbieder zijn site heeft aangepast, dan blijven de oude cijfers staan en krijgt de kaart het label "Controle nodig". Wachttijden kunnen verschillen per klacht, behandelaar en verzekeraar. Bel de aanbieder voor de actuele stand. Als bij een aanbieder niets over een contract staat, betekent dat niet dat er geen contract is.</p>
+    <p><b>Lang wachten?</b> Je zorgverzekeraar moet je helpen met wachtlijstbemiddeling. Het telefoonnummer staat op je zorgpas.</p>
+    <p><b>Niet opgenomen.</b> PsyQ en Riwis publiceren geen wachttijden per locatie. Max Ernst toont ze niet op een leesbare pagina. Van veel kleine praktijken in Veenendaal (zoals Caritas, Medulla, Overduin en Papillon) zijn de wachttijden nog niet opgezocht.</p>
+  </footer>
+</div>
+
+<script>
+const PLAATSEN = {
+  "Veenendaal":[52.027,5.556],"Ede":[52.040,5.665],"Rhenen":[51.959,5.568],"Wageningen":[51.969,5.665],
+  "Amersfoort":[52.156,5.387],"Utrecht":[52.091,5.122],"Zeist":[52.089,5.233],"Barneveld":[52.140,5.585],
+  "Driebergen":[52.053,5.281],"Leusden":[52.132,5.430],"Woudenberg":[52.080,5.415],"Scherpenzeel":[52.080,5.488],
+  "Renswoude":[52.073,5.540],"Lunteren":[52.085,5.622],"Bennekom":[52.001,5.676]
+};
+const VERZEKERAARS = ["a.s.r.","Anderzorg","CZ","De Friesland","Ditzo","DSW","ENO","FBTO","Interpolis","IZA","Just","Menzis","Nationale-Nederlanden","OHRA","ONVZ","Salland","Stad Holland","Univé","VGZ","Zilveren Kruis","Zorg en Zekerheid"];
+const GEGEVENS = {"laatsteControle": "2026-09-26T20:11:09+02:00", "samenvatting": "35 van 35 regels gelezen, 0 gewijzigd.", "vernieuwUrl": null, "aanbieders": [{"id": "ggz-heuvelrug-veenendaal", "org": "GGZ Heuvelrug", "afd": "Locatie Veenendaal", "plaats": "Veenendaal", "zorgvorm": null, "doel": null, "video": null, "contract": "geen", "noot": "Bij voorkeur voor EMDR, schematherapie, ACT, uitgebreide diagnostiek of avondafspraken kan het langer duren. Vrije-keuzepraktijk zonder contracten, dus een eigen bijdrage.", "bron": "https://www.ggzheuvelrug.nl/actuele-wachttijden/", "aanm": [2, 2], "beh": [2, 2], "videoAanm": null, "stop": false, "bijgewerkt": null, "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "ggz-heuvelrug-driebergen", "org": "GGZ Heuvelrug", "afd": "Locatie Driebergen", "plaats": "Driebergen", "zorgvorm": null, "doel": null, "video": null, "contract": "geen", "noot": "Zelfde voorwaarden als locatie Veenendaal.", "bron": "https://www.ggzheuvelrug.nl/actuele-wachttijden/", "aanm": [2, 2], "beh": [2, 2], "videoAanm": null, "stop": false, "bijgewerkt": null, "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "ggz-veenendaal-volwassenen", "org": "GGZ Veenendaal", "afd": "Volwassenen, basis en specialistisch", "plaats": "Veenendaal", "zorgvorm": null, "doel": ["Volwassenen"], "video": null, "contract": null, "noot": null, "bron": "https://www.ggzveenendaal.nl/6255-2/", "aanm": null, "beh": null, "videoAanm": null, "stop": true, "bijgewerkt": "juni 2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "ggz-veenendaal-jeugd", "org": "GGZ Veenendaal", "afd": "Kinderen en jongeren", "plaats": "Veenendaal", "zorgvorm": null, "doel": ["Jeugd"], "video": null, "contract": null, "noot": "Behandeling begint direct na de intake.", "bron": "https://www.ggzveenendaal.nl/6255-2/", "aanm": [6, 8], "beh": [0, 0], "videoAanm": null, "stop": false, "bijgewerkt": "juni 2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "de-hoop-veenendaal-bggz", "org": "De Hoop GGZ", "afd": "Volwassenen, basis GGZ", "plaats": "Veenendaal", "zorgvorm": "Basis GGZ", "doel": ["Volwassenen"], "video": null, "contract": null, "noot": null, "bron": "https://dehoop.org/wachttijden/aanmeldingswachttijden/", "aanm": [45, 45], "beh": [6, 6], "videoAanm": null, "stop": false, "bijgewerkt": "27-8-2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "de-hoop-veenendaal-sggz", "org": "De Hoop GGZ", "afd": "Volwassenen, specialistische GGZ", "plaats": "Veenendaal", "zorgvorm": "Specialistische GGZ", "doel": ["Volwassenen"], "video": null, "contract": null, "noot": "Voor verslavingsproblematiek geldt een aparte wachttijd, zie de site van De Hoop.", "bron": "https://dehoop.org/wachttijden/aanmeldingswachttijden/", "aanm": [60, 60], "beh": [8, 8], "videoAanm": null, "stop": false, "bijgewerkt": "27-8-2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "de-hoop-veenendaal-jeugd", "org": "De Hoop GGZ", "afd": "Kind en jeugd", "plaats": "Veenendaal", "zorgvorm": null, "doel": ["Jeugd"], "video": null, "contract": null, "noot": null, "bron": "https://dehoop.org/wachttijden/aanmeldingswachttijden/", "aanm": [11, 11], "beh": [0, 0], "videoAanm": null, "stop": false, "bijgewerkt": "3-9-2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "de-hoop-amersfoort-bggz", "org": "De Hoop GGZ", "afd": "Volwassenen, basis GGZ", "plaats": "Amersfoort", "zorgvorm": "Basis GGZ", "doel": ["Volwassenen"], "video": null, "contract": null, "noot": null, "bron": "https://dehoop.org/wachttijden/aanmeldingswachttijden/", "aanm": [12, 12], "beh": [8, 8], "videoAanm": null, "stop": false, "bijgewerkt": "27-8-2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "de-hoop-amersfoort-sggz", "org": "De Hoop GGZ", "afd": "Volwassenen, specialistische GGZ", "plaats": "Amersfoort", "zorgvorm": "Specialistische GGZ", "doel": ["Volwassenen"], "video": null, "contract": null, "noot": "Voor verslavingsproblematiek en diagnostiek gelden aparte wachttijden, zie de site van De Hoop.", "bron": "https://dehoop.org/wachttijden/aanmeldingswachttijden/", "aanm": [16, 16], "beh": [10, 10], "videoAanm": null, "stop": false, "bijgewerkt": "27-8-2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "de-hoop-amersfoort-jeugd", "org": "De Hoop GGZ", "afd": "Kind en jeugd", "plaats": "Amersfoort", "zorgvorm": null, "doel": ["Jeugd"], "video": null, "contract": null, "noot": null, "bron": "https://dehoop.org/wachttijden/aanmeldingswachttijden/", "aanm": [13, 13], "beh": [0, 0], "videoAanm": null, "stop": false, "bijgewerkt": "3-9-2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "psychiatriepraktijk-veenendaal", "org": "Psychiatriepraktijk Veenendaal", "afd": "ADHD-diagnostiek en -behandeling", "plaats": "Veenendaal", "zorgvorm": "Specialistische GGZ", "doel": ["Volwassenen"], "video": true, "contract": {"ja": ["a.s.r.", "Zilveren Kruis", "De Friesland", "FBTO", "Interpolis", "DSW", "Menzis", "Anderzorg", "ONVZ", "Salland", "Zorg en Zekerheid", "ENO", "CZ", "Ditzo", "Just", "Nationale-Nederlanden", "OHRA"]}, "stopVoor": ["VGZ", "IZA", "Univé"], "noot": "Afspraken zijn online. Verwijzing van de huisarts nodig. Zorgplafond bereikt voor VGZ, IZA, Univé en enkele andere labels.", "bron": "https://psychiatriepraktijkveenendaal.webnode.nl/wachttijden/", "aanm": [0, 12], "beh": null, "videoAanm": null, "stop": false, "bijgewerkt": "29-8-2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "josephine-andre-veenendaal", "org": "Psychologiepraktijk Josephine André", "afd": "Locatie Veenendaal", "plaats": "Veenendaal", "zorgvorm": null, "doel": null, "video": null, "contract": null, "noot": "Na het eerste gesprek is er geen wachttijd.", "bron": "https://ppja.nl/wachttijd/", "aanm": [13, 17], "beh": [0, 0], "videoAanm": null, "stop": false, "bijgewerkt": "11-09-2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "alfa-omega-renswoude", "org": "Psychologenpraktijk Alfa Omega", "afd": "Renswoude, vlak bij Veenendaal", "plaats": "Renswoude", "zorgvorm": null, "doel": ["Volwassenen"], "video": null, "contract": "geen", "noot": "Geen wachttijd vermeld. Geen verwijzing nodig. Vergoeding eventueel via aanvullende verzekering.", "bron": "https://praktijkalfaomega.nl/", "aanm": [0, 0], "beh": [0, 0], "videoAanm": null, "stop": false, "bijgewerkt": null, "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "vitaal-ggz-lunteren", "org": "Vitaal GGZ", "afd": "Nijkerk, Lunteren en Zeewolde", "plaats": "Lunteren", "zorgvorm": null, "doel": ["Volwassenen"], "video": true, "contract": "alle", "noot": "Na de intake is de wachttijd tot behandeling ongeveer 8 weken.", "bron": "https://www.vitaalggz.nl/regio/psycholoog-veenendaal", "aanm": null, "beh": null, "videoAanm": null, "stop": true, "bijgewerkt": "17 september 2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "hsk-ede", "org": "HSK", "afd": "Locatie Ede", "plaats": "Ede", "zorgvorm": null, "doel": null, "video": null, "contract": {"ja": ["a.s.r.", "Anderzorg", "CZ", "De Friesland", "DSW", "FBTO", "Interpolis", "IZA", "Just", "Menzis", "Nationale-Nederlanden", "OHRA", "ONVZ", "Salland", "Stad Holland", "Univé", "VGZ", "Zilveren Kruis", "Zorg en Zekerheid"]}, "noot": "De wachttijd verschilt per verzekeraar. HSK werkt de wachttijden elke twee weken bij.", "bron": "https://www.hsk.nl/psycholoog/ede/", "aanm": [6, 7], "beh": [3, 3], "videoAanm": null, "stop": false, "bijgewerkt": null, "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "pdp-ede-basis", "org": "PDP Ede", "afd": "Psychologische behandeling (basis GGZ)", "plaats": "Ede", "zorgvorm": "Basis GGZ", "doel": null, "video": null, "contract": null, "noot": null, "bron": "https://pdpede.nl/", "aanm": [10, 12], "beh": null, "videoAanm": null, "stop": false, "bijgewerkt": "01-09-2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "pdp-ede-specialistisch", "org": "PDP Ede", "afd": "Psychotherapie en diagnostiek (specialistisch)", "plaats": "Ede", "zorgvorm": "Specialistische GGZ", "doel": null, "video": null, "contract": null, "noot": null, "bron": "https://pdpede.nl/", "aanm": null, "beh": null, "videoAanm": null, "stop": true, "bijgewerkt": "01-09-2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "psychologenpraktijk-ede", "org": "Psychologenpraktijk Ede", "afd": "", "plaats": "Ede", "zorgvorm": null, "doel": null, "video": null, "contract": null, "noot": null, "bron": "https://psychologenpraktijkede.nl/", "aanm": null, "beh": null, "videoAanm": null, "stop": true, "bijgewerkt": "11 augustus 2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "spel-ede", "org": "Psychologenpraktijk S.P.E.L.", "afd": "Individueel en relatietherapie", "plaats": "Ede", "zorgvorm": null, "doel": ["Volwassenen"], "video": false, "contract": "alle", "noot": "Nieuwe aanmeldingen voor beeldbellen en EMDR zijn gesloten. Vanaf 18 jaar.", "bron": "https://spelede.nl/wachttijden/", "aanm": [11, 12], "beh": null, "videoAanm": null, "stop": false, "bijgewerkt": "17-08-2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "sinninghe-ede", "org": "Psychologenpraktijk Sinninghe", "afd": "EMDR en traumabehandeling", "plaats": "Ede", "zorgvorm": null, "doel": ["Volwassenen"], "video": true, "contract": "alle", "noot": "EMDR is ook online mogelijk. Aanmeldstop voor cognitieve gedragstherapie en ACT.", "bron": "https://psychologenpraktijk-sinninghe.nl/", "aanm": [9, 13], "beh": null, "videoAanm": null, "stop": false, "bijgewerkt": null, "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "riozorg-ede", "org": "RIOzorg", "afd": "Jeugd-ggz", "plaats": "Ede", "zorgvorm": null, "doel": ["Jeugd"], "video": true, "contract": null, "noot": "Na de intake is er ongeveer een maand nodig voor de administratie, zoals de beschikking van de gemeente.", "bron": "https://riozorg.nl/wachtlijst/", "aanm": [4, 4], "beh": [9, 17], "videoAanm": [9, 9], "stop": false, "bijgewerkt": null, "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "pro-persona-ede-jeugd", "org": "Pro Persona", "afd": "Jeugd, specialistische GGZ", "plaats": "Ede", "zorgvorm": "Specialistische GGZ", "doel": ["Jeugd"], "video": null, "contract": null, "noot": "Regio Ede, Veenendaal en Wageningen.", "bron": "https://propersona.nl/wachttijden/", "aanm": [2, 2], "beh": null, "videoAanm": null, "stop": false, "bijgewerkt": "september 2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "pro-persona-ede-ouderen", "org": "Pro Persona", "afd": "Ouderen 65+, specialistische GGZ", "plaats": "Ede", "zorgvorm": "Specialistische GGZ", "doel": ["Ouderen"], "video": null, "contract": null, "noot": null, "bron": "https://propersona.nl/wachttijden/", "aanm": [8, 8], "beh": null, "videoAanm": null, "stop": false, "bijgewerkt": "september 2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "pro-persona-ede-volwassenen", "org": "Pro Persona", "afd": "Volwassenen 18-65, specialistische GGZ", "plaats": "Ede", "zorgvorm": "Specialistische GGZ", "doel": ["Volwassenen"], "video": null, "contract": null, "noot": null, "bron": "https://propersona.nl/wachttijden/", "aanm": null, "beh": null, "videoAanm": null, "stop": true, "bijgewerkt": "september 2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "ggz-centrum-wageningen", "org": "GGZ Centrum Wageningen", "afd": "Specialistische GGZ", "plaats": "Wageningen", "zorgvorm": "Specialistische GGZ", "doel": null, "video": null, "contract": null, "stopVoor": ["CZ", "OHRA", "Just"], "noot": "De wachttijd geldt voor alle verzekeraars. Wel een aanmeldstop voor verzekerden van CZ, OHRA en Just.", "bron": "https://ggzwageningen.nl/contact/wachttijd", "aanm": [11, 11], "beh": [2, 2], "videoAanm": null, "stop": false, "bijgewerkt": null, "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "femma-roschar-wageningen", "org": "Psycholoog Femma Roschar", "afd": "", "plaats": "Wageningen", "zorgvorm": null, "doel": ["Volwassenen"], "video": null, "contract": null, "noot": "Op de site staat dat er op dit moment geen wachtlijst is.", "bron": "https://www.psycholooginwageningen.nl/", "aanm": [0, 0], "beh": [0, 0], "videoAanm": null, "stop": false, "bijgewerkt": null, "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "ggz-centraal-barneveld", "org": "GGz Centraal", "afd": "Kortdurende zorg volwassenen", "plaats": "Barneveld", "zorgvorm": null, "doel": ["Volwassenen"], "video": null, "contract": null, "noot": null, "bron": "https://www.ggzcentraal.nl/wachttijden/veluwe-veluwe-vallei/", "aanm": [26, 26], "beh": [7, 7], "videoAanm": null, "stop": false, "bijgewerkt": "10 september 2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "ggz-centraal-fact-veenendaal", "org": "GGz Centraal", "afd": "FACT Barneveld-Veenendaal", "plaats": "Veenendaal", "zorgvorm": "Specialistische GGZ", "doel": ["Volwassenen"], "video": null, "contract": null, "noot": "Voor mensen met ernstige psychiatrische aandoeningen.", "bron": "https://www.ggzcentraal.nl/wachttijden/veluwe-veluwe-vallei/", "aanm": [5, 5], "beh": [15, 15], "videoAanm": null, "stop": false, "bijgewerkt": "10 september 2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "ggz-centraal-eemland-stemming-angst", "org": "GGz Centraal", "afd": "Stemming en angst (Eemland)", "plaats": "Amersfoort", "zorgvorm": "Specialistische GGZ", "doel": ["Volwassenen"], "video": null, "contract": null, "noot": null, "bron": "https://www.ggzcentraal.nl/wachttijden/wachttijden-eemland/", "aanm": [8, 8], "beh": [9, 9], "videoAanm": null, "stop": false, "bijgewerkt": "10 september 2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "ggz-centraal-eemland-persoonlijkheid", "org": "GGz Centraal", "afd": "Persoonlijkheidsstoornissen (Eemland)", "plaats": "Amersfoort", "zorgvorm": "Specialistische GGZ", "doel": ["Volwassenen"], "video": null, "contract": null, "noot": null, "bron": "https://www.ggzcentraal.nl/wachttijden/wachttijden-eemland/", "aanm": [6, 6], "beh": [10, 10], "videoAanm": null, "stop": false, "bijgewerkt": "10 september 2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "ggz-centraal-eemland-autisme", "org": "GGz Centraal", "afd": "Autismespectrumstoornissen (Eemland)", "plaats": "Amersfoort", "zorgvorm": "Specialistische GGZ", "doel": ["Volwassenen"], "video": null, "contract": null, "noot": null, "bron": "https://www.ggzcentraal.nl/wachttijden/wachttijden-eemland/", "aanm": [26, 26], "beh": [16, 16], "videoAanm": null, "stop": false, "bijgewerkt": "10 september 2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "ggz-centraal-eemland-ouderen", "org": "GGz Centraal", "afd": "Ouderenpsychiatrie ambulant (Eemland)", "plaats": "Amersfoort", "zorgvorm": "Specialistische GGZ", "doel": ["Ouderen"], "video": null, "contract": null, "noot": null, "bron": "https://www.ggzcentraal.nl/wachttijden/wachttijden-eemland/", "aanm": [4, 4], "beh": [12, 12], "videoAanm": null, "stop": false, "bijgewerkt": "10 september 2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "indigo-amersfoort", "org": "Indigo", "afd": "Kortdurende behandeling", "plaats": "Amersfoort", "zorgvorm": "Basis GGZ", "doel": null, "video": null, "contract": null, "noot": "Voor ADHD geldt een langere wachttijd, zie de site van Indigo.", "bron": "https://indigo.nl/wachttijden/midden-nederland/", "aanm": [2, 2], "beh": [0, 0], "videoAanm": null, "stop": false, "bijgewerkt": "22-09-2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "indigo-zeist", "org": "Indigo", "afd": "Kortdurende behandeling en ADHD", "plaats": "Zeist", "zorgvorm": "Basis GGZ", "doel": null, "video": null, "contract": null, "noot": null, "bron": "https://indigo.nl/wachttijden/midden-nederland/", "aanm": [4, 4], "beh": [0, 0], "videoAanm": null, "stop": false, "bijgewerkt": "22-09-2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}, {"id": "indigo-utrecht", "org": "Indigo", "afd": "Utrecht Overvecht", "plaats": "Utrecht", "zorgvorm": "Basis GGZ", "doel": null, "video": null, "contract": null, "noot": "Op de andere Utrechtse locaties van Indigo is de wachttijd meestal gelijk.", "bron": "https://indigo.nl/wachttijden/midden-nederland/", "aanm": [2, 2], "beh": [0, 0], "videoAanm": null, "stop": false, "bijgewerkt": "22-09-2026", "gecontroleerd": "2026-09-26T20:11:09+02:00", "gewijzigd": null, "vorige": null, "status": "ok", "melding": null}]};
+let DATA = (GEGEVENS && GEGEVENS.aanbieders) || [];
+
+const $ = id => document.getElementById(id);
+const opt = (v,t) => `<option value="${v}">${t ?? v}</option>`;
+$("plaats").innerHTML = Object.keys(PLAATSEN).sort().map(p=>opt(p)).join("");
+$("plaats").value = "Veenendaal";
+$("verzekeraar").innerHTML = opt("","Alle verzekeraars") + VERZEKERAARS.map(v=>opt(v)).join("");
+
+let sortOp = "wacht";
+const TREEK = 14, SCALE = 70;
+
+function km([a,b],[c,d]){
+  const r=Math.PI/180, x=Math.sin((c-a)*r/2)**2+Math.cos(a*r)*Math.cos(c*r)*Math.sin((d-b)*r/2)**2;
+  return 6371*2*Math.asin(Math.sqrt(x));
+}
+function contractStatus(a,verz){
+  if (!verz) return "n.v.t.";
+  if ((a.stopVoor||[]).includes(verz)) return "stop";
+  if (a.contract==="alle") return "ja";
+  if (a.contract==="geen") return "nee";
+  if (a.contract && a.contract.ja && a.contract.ja.includes(verz)) return "ja";
+  return "onbekend";
+}
+const rng = ([a,b]) => a===b ? `${a}` : `${a}–${b}`;
+function status(a){
+  if (a.stop) return ["muted","Aanmeldstop"];
+  const intake = a.aanmW[1];
+  if (!a.behW) return intake<=4 ? ["ok","Intake binnen norm"] : intake<=8 ? ["warn","Intake boven norm"] : ["bad","Intake ruim boven norm"];
+  const t = a.totaal;
+  if (intake<=4 && t<=TREEK) return ["ok","Binnen Treeknorm"];
+  if (t<=TREEK+4) return ["warn","Net boven norm"];
+  return ["bad","Ruim boven norm"];
+}
+
+function render(){
+  const f = {
+    plaats:$("plaats").value, max:+$("afstand").value, video:$("beeldbellen").checked, videoOnb:$("videoOnbekend").checked,
+    verz:$("verzekeraar").value, zonder:$("zonderContract").checked,
+    zorgvorm:$("zorgvorm").value, doel:$("doelgroep").value, toonStop:$("toonStop").checked
+  };
+  $("afstandVal").textContent = f.max+" km";
+  $("zonderContractWrap").hidden = !f.verz;
+  $("videoOnbekendWrap").hidden = !f.video;
+  const herkomst = PLAATSEN[f.plaats];
+
+  let rows = DATA.map(a=>{
+    const useVideo = f.video && a.video && a.videoAanm;
+    const aanmW = a.stop ? null : (useVideo ? a.videoAanm : a.aanm);
+    const behW = a.stop ? null : a.beh;
+    return {...a, afstand:km(herkomst,PLAATSEN[a.plaats]), aanmW, behW,
+            totaal: aanmW ? aanmW[1] + (behW ? behW[1] : 0) : Infinity,
+            cs: contractStatus(a,f.verz)};
+  }).filter(a =>
+    a.afstand <= f.max &&
+    (!f.video || a.video===true || (f.videoOnb && a.video===null)) &&
+    (!f.verz || f.zonder || a.cs==="ja" || a.cs==="onbekend") &&
+    (!f.zorgvorm || a.zorgvorm===f.zorgvorm || a.zorgvorm===null) &&
+    (!f.doel || !a.doel || a.doel.includes(f.doel))
+  );
+  const open = rows.filter(r=>!r.stop), dicht = f.toonStop ? rows.filter(r=>r.stop) : [];
+  const cmp = sortOp==="afstand" ? (x,y)=>x.afstand-y.afstand : (x,y)=>x.totaal-y.totaal || x.afstand-y.afstand;
+  open.sort(cmp); dicht.sort((x,y)=>x.afstand-y.afstand);
+
+  $("count").textContent = open.length;
+  $("countLbl").textContent = open.length===1 ? "plek met open aanmelding" : "plekken met open aanmelding";
+  const snel = open.filter(r=>r.aanmW).sort((x,y)=>x.aanmW[1]-y.aanmW[1])[0];
+  $("fastest").textContent = snel ? `· snelste intake: ${snel.org}, ${rng(snel.aanmW)} wk` : "";
+
+  if (!open.length && !dicht.length){
+    $("list").innerHTML = `<div class="empty">Geen aanbieders gevonden met deze filters.<br>Vergroot de afstand of zet een filter uit.<br><button type="button" id="reset">Filters wissen</button></div>`;
+    $("reset").onclick = reset;
+    return;
+  }
+  $("list").innerHTML = open.map(a=>card(a,f)).join("") +
+    (dicht.length ? `<div class="divider">Aanmeldstop of wachtlijst gesloten (${dicht.length})</div>` + dicht.map(a=>card(a,f)).join("") : "");
+}
+
+function card(a,f){
+  const [cls,txt] = status(a);
+  const pct = w => Math.min(w/SCALE*100,100);
+  const naam = `<h3>${a.org}${a.afd?`<span class="afd">${a.afd}</span>`:""}</h3>`;
+  const meta = `<div class="meta"><span>${a.plaats}</span><span>${a.afstand<1?"&lt; 1":a.afstand.toFixed(0)} km</span>${a.zorgvorm?`<span>${a.zorgvorm}</span>`:""}${a.doel?`<span>${a.doel.join(" & ")}</span>`:""}</div>`;
+  const chips = [];
+  if (a.video===true) chips.push(`<span class="chip video">Online behandeling mogelijk</span>`);
+  if (a.video===false) chips.push(`<span class="chip">Geen nieuwe aanmeldingen voor beeldbellen</span>`);
+  if (f.verz){
+    if (a.cs==="ja") chips.push(`<span class="chip">Contract met ${f.verz}</span>`);
+    if (a.cs==="onbekend") chips.push(`<span class="chip warn">Contract met ${f.verz} niet vermeld</span>`);
+    if (a.cs==="nee") chips.push(`<span class="chip bad">Geen contract, eigen bijdrage</span>`);
+    if (a.cs==="stop") chips.push(`<span class="chip bad">Stop voor ${f.verz}-verzekerden</span>`);
+  } else if (a.contract==="geen") chips.push(`<span class="chip warn">Geen contracten met verzekeraars</span>`);
+  if (a.gewijzigd && Date.now() - new Date(a.gewijzigd) < 14*864e5) chips.unshift(`<span class="chip new" title="${esc(a.vorige||"")}">Gewijzigd op ${datum(a.gewijzigd,true)}</span>`);
+  if (a.status==="controle") chips.unshift(`<span class="chip bad">Controle nodig</span>`);
+  const controle = a.status==="controle" ? `<p class="note">Het ophaalscript kon deze pagina niet goed lezen (${esc(a.melding||"onbekende fout")}). De cijfers zijn van de laatste geslaagde controle. Kijk op de site van de aanbieder.</p>` : "";
+  const src = `<div class="src"><span>Bijgewerkt door aanbieder: ${a.bijgewerkt ? esc(a.bijgewerkt) : "datum niet vermeld"}</span><span>Gecontroleerd: ${datum(a.gecontroleerd)}</span><a href="${a.bron}" target="_blank" rel="noopener">Bekijk op de site van ${a.org}</a></div>`;
+
+  if (a.stop){
+    return `<article class="card stopped"><div>${naam}${meta}</div><div class="total"><span class="status ${cls}">${txt}</span></div>
+      ${a.noot?`<p class="note">${a.noot}</p>`:""}${controle}${chips.length?`<div class="chips">${chips.join("")}</div>`:""}${src}</article>`;
+  }
+  const aMax=a.aanmW[1], bMax=a.behW?a.behW[1]:null;
+  const totTxt = bMax===null ? `≥ ${aMax}` : `${a.totaal}`;
+  const bar = `<div class="bar" aria-label="${rng(a.aanmW)} weken tot intake, ${a.behW?rng(a.behW)+" weken":"onbekend"} tot behandeling">
+      <div class="track">
+        <div class="seg a" style="left:0;width:${pct(aMax)}%"></div>
+        ${bMax!==null ? `<div class="seg b" style="left:${pct(aMax)}%;width:${Math.max(pct(aMax+bMax)-pct(aMax),0)}%"></div>`
+                      : `<div class="seg u" style="left:${pct(aMax)}%;width:${pct(8)}%"></div>`}
+        <div class="norm" style="left:${pct(TREEK)}%"></div>
+      </div>
+      <div class="barlbl"><span>intake ${rng(a.aanmW)} wk · behandeling ${a.behW?"+"+rng(a.behW)+" wk":"niet vermeld"}</span>${f.video&&a.videoAanm?"<span>online route</span>":""}</div>
+    </div>`;
+  return `<article class="card"><div>${naam}${meta}</div>
+    <div class="total"><div class="n">${totTxt}</div><div class="u">weken tot start</div><span class="status ${cls}">${txt}</span></div>
+    ${bar}${a.noot?`<p class="note">${a.noot}</p>`:""}${controle}${chips.length?`<div class="chips">${chips.join("")}</div>`:""}${src}</article>`;
+}
+
+function reset(){
+  $("afstand").value=50; $("beeldbellen").checked=false; $("videoOnbekend").checked=false; $("verzekeraar").value="";
+  $("zonderContract").checked=false; $("zorgvorm").value=""; $("doelgroep").value="";
+  save(); render();
+}
+function save(){
+  try{ localStorage.setItem("ggzFilters2",JSON.stringify({plaats:$("plaats").value,verz:$("verzekeraar").value,video:$("beeldbellen").checked})); }catch(e){}
+}
+try{
+  const s = JSON.parse(localStorage.getItem("ggzFilters2")||"null");
+  if (s){ if(PLAATSEN[s.plaats]) $("plaats").value=s.plaats; if(VERZEKERAARS.includes(s.verz)) $("verzekeraar").value=s.verz; $("beeldbellen").checked=!!s.video; }
+}catch(e){}
+
+document.querySelectorAll("aside select, aside input").forEach(el=>el.addEventListener("input",()=>{save();render();}));
+document.querySelectorAll(".sort button").forEach(b=>b.addEventListener("click",()=>{
+  sortOp=b.dataset.sort;
+  document.querySelectorAll(".sort button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  render();
+}));
+render();
+
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function datum(iso, kort){
+  if (!iso) return "onbekend";
+  const d = new Date(iso); if (isNaN(d)) return esc(iso);
+  return d.toLocaleDateString("nl-NL",{day:"numeric",month:"short",year:"numeric"}) + (!kort && String(iso).length>10 ? " " + d.toLocaleTimeString("nl-NL",{hour:"2-digit",minute:"2-digit"}) : "");
+}
+(function(){
+  const g = GEGEVENS || {};
+  $("refreshTitle").textContent = g.laatsteControle ? `Laatst opgehaald: ${datum(g.laatsteControle)}` : "Nog niet opgehaald";
+  $("refreshSub").textContent = (g.samenvatting ? g.samenvatting + " " : "") + "Wordt elke ochtend automatisch vernieuwd.";
+  if (g.vernieuwUrl){ $("refreshLink").href = g.vernieuwUrl; $("refreshLink").hidden = false; }
+})();
+</script>
