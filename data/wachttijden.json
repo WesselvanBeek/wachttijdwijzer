@@ -1,0 +1,592 @@
+{
+  "laatsteControle": "2026-09-26T20:11:09+02:00",
+  "samenvatting": "35 van 35 regels gelezen, 0 gewijzigd.",
+  "repo": null,
+  "rijen": {
+    "ggz-heuvelrug-veenendaal": {
+      "aanm": [
+        2,
+        2
+      ],
+      "beh": [
+        2,
+        2
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": null,
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "ggz-heuvelrug-driebergen": {
+      "aanm": [
+        2,
+        2
+      ],
+      "beh": [
+        2,
+        2
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": null,
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "ggz-veenendaal-volwassenen": {
+      "aanm": null,
+      "beh": null,
+      "videoAanm": null,
+      "stop": true,
+      "bijgewerkt": "juni 2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "ggz-veenendaal-jeugd": {
+      "aanm": [
+        6,
+        8
+      ],
+      "beh": [
+        0,
+        0
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "juni 2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "de-hoop-veenendaal-bggz": {
+      "aanm": [
+        45,
+        45
+      ],
+      "beh": [
+        6,
+        6
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "27-8-2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "de-hoop-veenendaal-sggz": {
+      "aanm": [
+        60,
+        60
+      ],
+      "beh": [
+        8,
+        8
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "27-8-2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "de-hoop-veenendaal-jeugd": {
+      "aanm": [
+        11,
+        11
+      ],
+      "beh": [
+        0,
+        0
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "3-9-2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "de-hoop-amersfoort-bggz": {
+      "aanm": [
+        12,
+        12
+      ],
+      "beh": [
+        8,
+        8
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "27-8-2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "de-hoop-amersfoort-sggz": {
+      "aanm": [
+        16,
+        16
+      ],
+      "beh": [
+        10,
+        10
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "27-8-2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "de-hoop-amersfoort-jeugd": {
+      "aanm": [
+        13,
+        13
+      ],
+      "beh": [
+        0,
+        0
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "3-9-2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "psychiatriepraktijk-veenendaal": {
+      "aanm": [
+        0,
+        12
+      ],
+      "beh": null,
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "29-8-2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "josephine-andre-veenendaal": {
+      "aanm": [
+        13,
+        17
+      ],
+      "beh": [
+        0,
+        0
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "11-09-2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "alfa-omega-renswoude": {
+      "aanm": [
+        0,
+        0
+      ],
+      "beh": [
+        0,
+        0
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": null,
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "vitaal-ggz-lunteren": {
+      "aanm": null,
+      "beh": null,
+      "videoAanm": null,
+      "stop": true,
+      "bijgewerkt": "17 september 2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "hsk-ede": {
+      "aanm": [
+        6,
+        7
+      ],
+      "beh": [
+        3,
+        3
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": null,
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "pdp-ede-basis": {
+      "aanm": [
+        10,
+        12
+      ],
+      "beh": null,
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "01-09-2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "pdp-ede-specialistisch": {
+      "aanm": null,
+      "beh": null,
+      "videoAanm": null,
+      "stop": true,
+      "bijgewerkt": "01-09-2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "psychologenpraktijk-ede": {
+      "aanm": null,
+      "beh": null,
+      "videoAanm": null,
+      "stop": true,
+      "bijgewerkt": "11 augustus 2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "spel-ede": {
+      "aanm": [
+        11,
+        12
+      ],
+      "beh": null,
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "17-08-2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "sinninghe-ede": {
+      "aanm": [
+        9,
+        13
+      ],
+      "beh": null,
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": null,
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "riozorg-ede": {
+      "aanm": [
+        4,
+        4
+      ],
+      "beh": [
+        9,
+        17
+      ],
+      "videoAanm": [
+        9,
+        9
+      ],
+      "stop": false,
+      "bijgewerkt": null,
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "pro-persona-ede-jeugd": {
+      "aanm": [
+        2,
+        2
+      ],
+      "beh": null,
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "september 2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "pro-persona-ede-ouderen": {
+      "aanm": [
+        8,
+        8
+      ],
+      "beh": null,
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "september 2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "pro-persona-ede-volwassenen": {
+      "aanm": null,
+      "beh": null,
+      "videoAanm": null,
+      "stop": true,
+      "bijgewerkt": "september 2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "ggz-centrum-wageningen": {
+      "aanm": [
+        11,
+        11
+      ],
+      "beh": [
+        2,
+        2
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": null,
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "femma-roschar-wageningen": {
+      "aanm": [
+        0,
+        0
+      ],
+      "beh": [
+        0,
+        0
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": null,
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "ggz-centraal-barneveld": {
+      "aanm": [
+        26,
+        26
+      ],
+      "beh": [
+        7,
+        7
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "10 september 2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "ggz-centraal-fact-veenendaal": {
+      "aanm": [
+        5,
+        5
+      ],
+      "beh": [
+        15,
+        15
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "10 september 2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "ggz-centraal-eemland-stemming-angst": {
+      "aanm": [
+        8,
+        8
+      ],
+      "beh": [
+        9,
+        9
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "10 september 2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "ggz-centraal-eemland-persoonlijkheid": {
+      "aanm": [
+        6,
+        6
+      ],
+      "beh": [
+        10,
+        10
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "10 september 2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "ggz-centraal-eemland-autisme": {
+      "aanm": [
+        26,
+        26
+      ],
+      "beh": [
+        16,
+        16
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "10 september 2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "ggz-centraal-eemland-ouderen": {
+      "aanm": [
+        4,
+        4
+      ],
+      "beh": [
+        12,
+        12
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "10 september 2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "indigo-amersfoort": {
+      "aanm": [
+        2,
+        2
+      ],
+      "beh": [
+        0,
+        0
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "22-09-2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "indigo-zeist": {
+      "aanm": [
+        4,
+        4
+      ],
+      "beh": [
+        0,
+        0
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "22-09-2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    },
+    "indigo-utrecht": {
+      "aanm": [
+        2,
+        2
+      ],
+      "beh": [
+        0,
+        0
+      ],
+      "videoAanm": null,
+      "stop": false,
+      "bijgewerkt": "22-09-2026",
+      "gecontroleerd": "2026-09-26T20:11:09+02:00",
+      "gewijzigd": null,
+      "vorige": null,
+      "status": "ok",
+      "melding": null
+    }
+  }
+}
