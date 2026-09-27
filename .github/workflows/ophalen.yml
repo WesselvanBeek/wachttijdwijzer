@@ -1,0 +1,61 @@
+name: Wachttijden ophalen
+
+on:
+  schedule:
+    - cron: "15 4 * * *"   # elke ochtend rond 6 uur Nederlandse tijd (GitHub rekent in UTC)
+  workflow_dispatch:        # knop "Run workflow" om het direct te doen
+  push:
+    branches: [main]
+    paths:
+      - "data/aanbieders.json"
+      - "app/**"
+      - "scraper/**"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: wachttijden
+  cancel-in-progress: false
+
+jobs:
+  ophalen:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.publiceren.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Benodigdheden installeren
+        run: pip install -r requirements.txt
+
+      - name: Wachttijden ophalen en app bouwen
+        run: python scraper/ophalen.py
+
+      - name: Resultaat opslaan in de repository
+        run: |
+          git config user.name "wachttijden-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/wachttijden.json index.html
+          git diff --cached --quiet || git commit -m "Wachttijden bijgewerkt $(date +'%Y-%m-%d')"
+          git push
+
+      - name: Site klaarzetten
+        run: mkdir _site && cp index.html _site/
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Site publiceren
+        id: publiceren
+        uses: actions/deploy-pages@v4
