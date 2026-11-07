@@ -1,6 +1,6 @@
 {
-  "laatsteControle": "2026-11-06T13:02:21+01:00",
-  "samenvatting": "31 van 35 regels gelezen, 1 gewijzigd, controle nodig bij GGZ Veenendaal, HSK, RIOzorg.",
+  "laatsteControle": "2026-11-07T12:00:29+01:00",
+  "samenvatting": "31 van 35 regels gelezen, 6 gewijzigd, controle nodig bij GGZ Veenendaal, HSK, RIOzorg.",
   "repo": "WesselvanBeek/wachttijdwijzer",
   "rijen": {
     "ggz-heuvelrug-veenendaal": {
@@ -15,7 +15,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": null,
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -33,7 +33,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": null,
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -81,7 +81,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": "13-10-2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -99,7 +99,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": "13-10-2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -117,7 +117,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": "27-10-2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": "2026-10-28T11:32:05+01:00",
       "vorige": "Was: intake 9 wk, behandeling 0 wk",
       "status": "ok",
@@ -135,7 +135,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": "13-10-2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": "2026-10-14T11:29:13+02:00",
       "vorige": "Was: intake 12 wk, behandeling 8 wk",
       "status": "ok",
@@ -153,7 +153,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": "13-10-2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -171,7 +171,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": "27-10-2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": "2026-10-14T11:29:13+02:00",
       "vorige": "Was: intake 20 wk, behandeling 0 wk",
       "status": "ok",
@@ -186,7 +186,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": "02-11-2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -204,7 +204,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": "30-10-2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -222,7 +222,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": null,
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -234,7 +234,7 @@
       "videoAanm": null,
       "stop": true,
       "bijgewerkt": "2 november 2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -267,7 +267,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": "02-11-2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": "2026-10-29T11:51:59+01:00",
       "vorige": "Was: intake 13-17 wk, behandeling ? wk",
       "status": "ok",
@@ -279,7 +279,7 @@
       "videoAanm": null,
       "stop": true,
       "bijgewerkt": "02-11-2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -291,7 +291,7 @@
       "videoAanm": null,
       "stop": true,
       "bijgewerkt": "11 augustus 2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -306,7 +306,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": "05-11-2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": "2026-11-06T13:02:21+01:00",
       "vorige": "Was: intake 11-12 wk, behandeling ? wk",
       "status": "ok",
@@ -321,7 +321,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": null,
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -346,7 +346,7 @@
       "gewijzigd": "2026-10-01T12:55:09+02:00",
       "vorige": "Was: intake 4 wk, behandeling 9-17 wk",
       "status": "controle",
-      "melding": "geen wachttijd gevonden bij 'Ede'; geen wachttijd gevonden bij 'Online'"
+      "melding": "pagina niet bereikbaar"
     },
     "pro-persona-ede-jeugd": {
       "aanm": [
@@ -357,7 +357,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": "november 2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -372,7 +372,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": "november 2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -384,7 +384,7 @@
       "videoAanm": null,
       "stop": true,
       "bijgewerkt": "november 2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -402,7 +402,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": null,
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -420,7 +420,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": null,
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -428,44 +428,44 @@
     },
     "ggz-centraal-barneveld": {
       "aanm": [
-        24,
-        24
+        20,
+        20
       ],
       "beh": [
-        7,
-        7
+        11,
+        11
       ],
       "videoAanm": null,
       "stop": false,
-      "bijgewerkt": "8 oktober 2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
-      "gewijzigd": "2026-10-08T13:19:52+02:00",
-      "vorige": "Was: intake 26 wk, behandeling 7 wk",
+      "bijgewerkt": "6 november 2026",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
+      "gewijzigd": "2026-11-07T12:00:29+01:00",
+      "vorige": "Was: intake 24 wk, behandeling 7 wk",
       "status": "ok",
       "melding": null
     },
     "ggz-centraal-fact-veenendaal": {
       "aanm": [
-        11,
-        11
+        19,
+        19
       ],
       "beh": [
-        1,
-        1
+        4,
+        4
       ],
       "videoAanm": null,
       "stop": false,
-      "bijgewerkt": "8 oktober 2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
-      "gewijzigd": "2026-10-08T13:19:52+02:00",
-      "vorige": "Was: intake 5 wk, behandeling 15 wk",
+      "bijgewerkt": "6 november 2026",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
+      "gewijzigd": "2026-11-07T12:00:29+01:00",
+      "vorige": "Was: intake 11 wk, behandeling 1 wk",
       "status": "ok",
       "melding": null
     },
     "ggz-centraal-eemland-stemming-angst": {
       "aanm": [
-        9,
-        9
+        10,
+        10
       ],
       "beh": [
         8,
@@ -473,17 +473,17 @@
       ],
       "videoAanm": null,
       "stop": false,
-      "bijgewerkt": "8 oktober 2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
-      "gewijzigd": "2026-10-08T13:19:52+02:00",
-      "vorige": "Was: intake 8 wk, behandeling 9 wk",
+      "bijgewerkt": "6 november 2026",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
+      "gewijzigd": "2026-11-07T12:00:29+01:00",
+      "vorige": "Was: intake 9 wk, behandeling 8 wk",
       "status": "ok",
       "melding": null
     },
     "ggz-centraal-eemland-persoonlijkheid": {
       "aanm": [
-        6,
-        6
+        8,
+        8
       ],
       "beh": [
         13,
@@ -491,28 +491,28 @@
       ],
       "videoAanm": null,
       "stop": false,
-      "bijgewerkt": "8 oktober 2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
-      "gewijzigd": "2026-10-08T13:19:52+02:00",
-      "vorige": "Was: intake 6 wk, behandeling 10 wk",
+      "bijgewerkt": "6 november 2026",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
+      "gewijzigd": "2026-11-07T12:00:29+01:00",
+      "vorige": "Was: intake 6 wk, behandeling 13 wk",
       "status": "ok",
       "melding": null
     },
     "ggz-centraal-eemland-autisme": {
       "aanm": [
+        33,
+        33
+      ],
+      "beh": [
         25,
         25
       ],
-      "beh": [
-        23,
-        23
-      ],
       "videoAanm": null,
       "stop": false,
-      "bijgewerkt": "8 oktober 2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
-      "gewijzigd": "2026-10-08T13:19:52+02:00",
-      "vorige": "Was: intake 26 wk, behandeling 16 wk",
+      "bijgewerkt": "6 november 2026",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
+      "gewijzigd": "2026-11-07T12:00:29+01:00",
+      "vorige": "Was: intake 25 wk, behandeling 23 wk",
       "status": "ok",
       "melding": null
     },
@@ -522,15 +522,15 @@
         6
       ],
       "beh": [
-        11,
-        11
+        12,
+        12
       ],
       "videoAanm": null,
       "stop": false,
-      "bijgewerkt": "8 oktober 2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
-      "gewijzigd": "2026-10-08T13:19:52+02:00",
-      "vorige": "Was: intake 4 wk, behandeling 12 wk",
+      "bijgewerkt": "6 november 2026",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
+      "gewijzigd": "2026-11-07T12:00:29+01:00",
+      "vorige": "Was: intake 6 wk, behandeling 11 wk",
       "status": "ok",
       "melding": null
     },
@@ -546,7 +546,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": "14-10-2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -564,7 +564,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": "14-10-2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": null,
       "vorige": null,
       "status": "ok",
@@ -582,7 +582,7 @@
       "videoAanm": null,
       "stop": false,
       "bijgewerkt": "14-10-2026",
-      "gecontroleerd": "2026-11-06T13:02:21+01:00",
+      "gecontroleerd": "2026-11-07T12:00:29+01:00",
       "gewijzigd": "2026-10-14T11:29:13+02:00",
       "vorige": "Was: intake 2 wk, behandeling 0 wk",
       "status": "ok",
